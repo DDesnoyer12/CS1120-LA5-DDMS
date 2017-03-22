@@ -12,8 +12,7 @@ import edu.wmich.cs1120.la5.TerrainScanner;
 
 public class LA5Main {
 
-	public static void main(String[] args) {
-
+	public static void main(String[] args) throws IOException {
 		MainWindow.startGUI();
 
 	}
