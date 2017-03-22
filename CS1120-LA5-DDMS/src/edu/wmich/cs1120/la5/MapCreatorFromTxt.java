@@ -41,6 +41,8 @@ public class MapCreatorFromTxt implements IMapCreator {
 			
 		}		
 		
+		scanner.setTerrain(areaArray);
+		
 	}
 
 	@Override
