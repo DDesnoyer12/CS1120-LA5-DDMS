@@ -36,5 +36,8 @@ public class RadiationAnalyzer implements IRover {
 	public void setAnalysis(String analysis) {
 		this.analysis = analysis;
 	}
-
+	@Override
+	public String toString(){
+		return "Total Radiation";
+	}
 }

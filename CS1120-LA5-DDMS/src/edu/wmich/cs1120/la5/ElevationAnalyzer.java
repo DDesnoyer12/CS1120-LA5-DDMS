@@ -37,5 +37,9 @@ private String analysis;
 	public void setAnalysis(String analysis) {
 		this.analysis = analysis;
 	}
+	@Override
+	public String toString(){
+		return "Average elevation";
+	}
 
 }
