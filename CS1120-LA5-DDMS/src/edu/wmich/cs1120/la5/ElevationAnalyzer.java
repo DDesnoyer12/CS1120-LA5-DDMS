@@ -19,8 +19,13 @@ private String analysis;
 
 	@Override
 	public void analyzePath() {
-		// TODO Auto-generated method stub
-		
+		double total = 0;
+		double avg = 0;
+		for(int i =0; i<path.size(); i++){
+			total = total + path.get(i).getElevation();
+		}
+		avg = total/path.size();
+		analysis = Double.toString(avg);
 	}
 
 	@Override
