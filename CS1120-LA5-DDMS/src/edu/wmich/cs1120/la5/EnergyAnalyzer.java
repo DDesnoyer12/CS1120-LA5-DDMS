@@ -21,7 +21,7 @@ public class EnergyAnalyzer implements IRover {
 	public void analyzePath() {
 		double total = 0;
 		for(int i =0; i<path.size(); i++){
-			total = total + path.get(i).getElevation();
+			total = total + path.get(i).getBasicEnergyCost();
 		}
 		
 		analysis = Double.toString(total);

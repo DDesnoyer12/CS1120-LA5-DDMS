@@ -21,7 +21,7 @@ public class RadiationAnalyzer implements IRover {
 	public void analyzePath() {
 		double total = 0;
 		for(int i =0; i<path.size(); i++){
-			total = total + path.get(i).getElevation();
+			total = total + path.get(i).getRadiation();
 		}
 		
 		analysis = Double.toString(total);
