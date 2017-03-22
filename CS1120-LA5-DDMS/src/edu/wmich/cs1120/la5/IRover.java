@@ -4,17 +4,17 @@ import java.io.*;
 import java.util.*;
 
 public interface IRover {
-	
+
 	ArrayList<IArea> getPath();
-	
+
 	void setPath(ArrayList<IArea> path);
-	
+
 	void analyzePath();
-	
+
 	String getAnalysis();
-	
+
 	void setAnalysis(String analysis);
-	
+
 	String toString();
 
 }
