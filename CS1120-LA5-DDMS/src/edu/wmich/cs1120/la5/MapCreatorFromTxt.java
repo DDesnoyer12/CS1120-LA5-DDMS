@@ -40,6 +40,7 @@ public class MapCreatorFromTxt implements IMapCreator {
 			}
 			
 		}		
+		scanner.setTerrain(areaArray);
 		
 		scanner.setTerrain(areaArray);
 		
