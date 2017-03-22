@@ -31,7 +31,6 @@ public class MapCreatorFromDat implements IMapCreator {
 			basicEnergyCost = raf.readDouble();
 			elevation = raf.readDouble();
 			radiation = raf.readDouble();
-			System.out.println(basicEnergyCost + " " + elevation + " " + radiation);
 			if(radiation >= 0.5) {
 				areaArray[i][j] = new HighArea(basicEnergyCost, elevation, radiation);
 			} else if(radiation < 0.5 && elevation > (threshold*0.5)) {
