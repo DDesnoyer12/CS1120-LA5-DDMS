@@ -5,66 +5,81 @@ import edu.wmich.cs1120.la5.gui.MainWindow;
 import edu.wmich.cs1120.la5.TerrainScanner;
 
 public class MapCreatorFromDat implements IMapCreator {
-	
+
 	private TerrainScanner scanner = new TerrainScanner();
 	private IArea areaArray[][] = new IArea[10][10];
 
+	/**
+	 * Reads and stores the data from the binary file, and uses it to create 
+	 * and store HighArea and LowArea objects in an array.
+	 * @param fileName The name of the binary file.
+	 * @param threshold The limit for the elevation of an Area.
+	 * @throws IOException Throws an exception if an I/O interruption occurs.
+	 */
 	@Override
 	public void scanTerrain(String fileName, int threshold) throws IOException {
 		File datFile = new File(fileName);
 		RandomAccessFile raf = new RandomAccessFile(datFile, "r");
 		boolean flag = false;
 		int index = 0;
-		int a = 0;
-		int b = 0;
+		int a = 0, b = 0;
 		char c;
+		double basicEnergyCost = 0, elevation = 0, radiation = 0;
+		int i = 0, j = 0;
 		Addition add = new Addition();
 		Subtraction minus = new Subtraction();
 		IExpression ex;
-		double basicEnergyCost = 0;
-		double elevation = 0;
-		double radiation = 0;
-		int i = 0;
-		int j = 0;
-		while(flag == false){
-			raf.seek(index*34);
+		
+		while (flag == false) {
+			
+			raf.seek(index * 34);
+			
 			basicEnergyCost = raf.readDouble();
 			elevation = raf.readDouble();
 			radiation = raf.readDouble();
-			if(radiation >= 0.5) {
+			
+			if (radiation >= 0.5) {
 				areaArray[i][j] = new HighArea(basicEnergyCost, elevation, radiation);
-			} else if(radiation < 0.5 && elevation > (threshold*0.5)) {
+			} else if (radiation < 0.5 && elevation > (threshold * 0.5)) {
 				areaArray[i][j] = new HighArea(basicEnergyCost, elevation, radiation);
 			} else {
 				areaArray[i][j] = new LowArea(basicEnergyCost, elevation, radiation);
 			}
-			if(j < 9) {
+			
+			if (j < 9) {
 				j++;
-			} else if(j == 9) {
+			} else if (j == 9) {
 				j = 0;
 				i++;
 			}
+			
 			c = raf.readChar();
-			//System.out.println(c);
 			a = raf.readInt();
 			b = raf.readInt();
-			//System.out.println(a+" " +b);
 			ex = ExpressionFactory.getExpression(c, a, b);
 			index = ex.getValue();
-			if(index==-1){
-				flag=true;
+			if (index == -1) {
+				flag = true;
 			}
-			
+
 		}
-		
+
 		scanner.setTerrain(areaArray);
 	}
 
+	/**
+	 * Getter method for the TerrainScanner
+	 * @return Returns a TerrainScanner object.
+	 */
 	@Override
 	public TerrainScanner getScanner() {
 		return this.scanner;
 	}
 
+	/**
+	 * Setter for the TerrainScanner
+	 * @param scanner An object of TerrainScanner
+	 */
 	@Override
 	public void setScanner(TerrainScanner scanner) {
 		this.scanner = scanner;

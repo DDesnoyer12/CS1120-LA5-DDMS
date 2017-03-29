@@ -10,6 +10,13 @@ public class MapCreatorFromTxt implements IMapCreator {
 	private TerrainScanner scanner = new TerrainScanner();
 	private IArea[][] areaArray = new IArea[10][10];
 
+	/**
+	 * Reads and stores the input from the text file, and uses it to create and store 
+	 * HighArea and LowArea type objects.
+	 * @param fileName The name of the text file
+	 * @param threshold The limit for the elevation of the Area
+	 * @throws IOException Throws an exception if an I/O interruption occurs
+	 */
 	@Override
 	public void scanTerrain(String fileName, int threshold) throws IOException {
 		File textFile = new File(fileName);
@@ -42,15 +49,21 @@ public class MapCreatorFromTxt implements IMapCreator {
 		}		
 		scanner.setTerrain(areaArray);
 		
-		scanner.setTerrain(areaArray);
-		
 	}
 
+	/**
+	 * Getter method for the TerrainScanner
+	 * @return Returns a TerrainScanner object.
+	 */
 	@Override
 	public TerrainScanner getScanner() {
 		return this.scanner;
 	}
 
+	/**
+	 * Setter for the TerrainScanner
+	 * @param scanner An object of TerrainScanner
+	 */
 	@Override
 	public void setScanner(TerrainScanner scanner) {
 		this.scanner = scanner;

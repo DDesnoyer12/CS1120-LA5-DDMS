@@ -14,7 +14,6 @@ public class LA5Main {
 
 	public static void main(String[] args) throws IOException {
 		MainWindow.startGUI();
-
 	}
 
 }
