@@ -22,12 +22,10 @@ public class MapCreatorFromDat implements IMapCreator {
 		RandomAccessFile raf = new RandomAccessFile(datFile, "r");
 		boolean flag = false;
 		int index = 0;
-		int a = 0, b = 0;
-		char c;
+		int left = 0, right = 0;
+		char character;
 		double basicEnergyCost = 0, elevation = 0, radiation = 0;
 		int i = 0, j = 0;
-		Addition add = new Addition();
-		Subtraction minus = new Subtraction();
 		IExpression ex;
 		
 		while (flag == false) {
@@ -53,10 +51,10 @@ public class MapCreatorFromDat implements IMapCreator {
 				i++;
 			}
 			
-			c = raf.readChar();
-			a = raf.readInt();
-			b = raf.readInt();
-			ex = ExpressionFactory.getExpression(c, a, b);
+			character = raf.readChar();
+			left = raf.readInt();
+			right = raf.readInt();
+			ex = ExpressionFactory.getExpression(character, left, right);
 			index = ex.getValue();
 			if (index == -1) {
 				flag = true;
@@ -65,6 +63,7 @@ public class MapCreatorFromDat implements IMapCreator {
 		}
 
 		scanner.setTerrain(areaArray);
+		raf.close();
 	}
 
 	/**
