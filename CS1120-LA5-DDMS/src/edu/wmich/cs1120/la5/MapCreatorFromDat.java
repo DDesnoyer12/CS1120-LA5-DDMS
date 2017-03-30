@@ -26,7 +26,7 @@ public class MapCreatorFromDat implements IMapCreator {
 		char character;
 		double basicEnergyCost = 0, elevation = 0, radiation = 0;
 		int i = 0, j = 0;
-		IExpression ex;
+		IExpression expression;
 		
 		while (flag == false) {
 			
@@ -54,8 +54,8 @@ public class MapCreatorFromDat implements IMapCreator {
 			character = raf.readChar();
 			left = raf.readInt();
 			right = raf.readInt();
-			ex = ExpressionFactory.getExpression(character, left, right);
-			index = ex.getValue();
+			expression = ExpressionFactory.getExpression(character, left, right);
+			index = expression.getValue();
 			if (index == -1) {
 				flag = true;
 			}
